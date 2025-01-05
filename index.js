@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/UsersRoutes");
 
@@ -11,14 +12,14 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(bodyParser.json());
-
+app.use(cors())
 // app.get("/", (req, res) => {
 //   res.send("Get Method");
 // });
 
 app.use("/user", userRoutes);
 
-const PORT = 6000;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server Running On http://localhost:${PORT}`);
 });
